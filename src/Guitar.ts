@@ -1,21 +1,24 @@
+import { Builder } from "./types/Builder";
+import { Type } from "./types/Type";
+import { Wood } from "./types/Wood";
 export type Guitar = InstanceType<typeof Guitar>;
 export const Guitar = class {
   private _serialNumber: string;
   private _price: number;
-  private _builder: string;
+  private _builder: Builder;
   private _model: string;
-  private _type: string;
-  private _backWood: string;
-  private _topWood: string;
+  private _type: Type;
+  private _backWood: Wood;
+  private _topWood: Wood;
 
   constructor(
     serialNumber: string,
     price: number,
-    builder: string,
+    builder: Builder,
     model: string,
-    type: string,
-    backWood: string,
-    topWood: string
+    type: Type,
+    backWood: Wood,
+    topWood: Wood
   ) {
     this._serialNumber = serialNumber;
     this._price = price;
@@ -38,7 +41,7 @@ export const Guitar = class {
     this._price = val;
   }
 
-  get builder(): string {
+  get builder(): Builder {
     return this._builder;
   }
 
@@ -46,14 +49,14 @@ export const Guitar = class {
     return this._model;
   }
 
-  get type(): string {
+  get type(): Type {
     return this._type;
   }
 
-  get backWood(): string {
+  get backWood(): Wood {
     return this._backWood;
   }
-  get topWood(): string {
+  get topWood(): Wood {
     return this._topWood;
   }
 };
