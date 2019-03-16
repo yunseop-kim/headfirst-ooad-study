@@ -1,14 +1,5 @@
-export interface IGuitar {
-  serialNumber: string;
-  price: number;
-  builder: string;
-  model: string;
-  type: string;
-  backWood: string;
-  topWood: string;
-}
-
-export const Guitar = class implements IGuitar {
+export type Guitar = InstanceType<typeof Guitar>;
+export const Guitar = class {
   private _serialNumber: string;
   private _price: number;
   private _builder: string;

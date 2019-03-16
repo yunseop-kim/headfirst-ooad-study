@@ -1,23 +1,9 @@
-import { IGuitar, Guitar } from "./Guitar";
-
-export interface IInventory {
-  addGuitar(
-    serialNumber: string,
-    price: number,
-    builder: string,
-    model: string,
-    type: string,
-    backWood: string,
-    topWood: string
-  ): void;
-  getGuitar(serialNumber: string): IGuitar;
-  search(searchGuitar: IGuitar): IGuitar;
-}
-
-export const Inventory = class implements IInventory {
-  private _guitars: IGuitar[];
+import { Guitar } from "./Guitar";
+export type Inventory = InstanceType<typeof Inventory>;
+export const Inventory = class {
+  private _guitars: Guitar[];
   constructor() {
-    // this._guitars = new Array<IGuitar>();
+    // this._guitars = new Array<Guitar>();
     this._guitars = [];
   }
   addGuitar(
@@ -29,7 +15,7 @@ export const Inventory = class implements IInventory {
     backWood: string,
     topWood: string
   ): void {
-    const guitar: IGuitar = new Guitar(
+    const guitar: Guitar = new Guitar(
       serialNumber,
       price,
       builder,
@@ -40,12 +26,12 @@ export const Inventory = class implements IInventory {
     );
     this._guitars.push(guitar);
   }
-  getGuitar(serialNumber: string): IGuitar {
+  getGuitar(serialNumber: string): Guitar {
     return this._guitars.filter(
-      (item: IGuitar): boolean => item.serialNumber == serialNumber
+      (item: Guitar): boolean => item.serialNumber == serialNumber
     )[0];
   }
-  search(searchGuitar: IGuitar): IGuitar {
+  search(searchGuitar: Guitar): Guitar {
     const {
       builder: tBuilder,
       model: tModel,
@@ -54,12 +40,12 @@ export const Inventory = class implements IInventory {
       topWood: tTopWood
     } = searchGuitar;
     return this._guitars.filter(
-      (item: IGuitar): boolean => {
+      (item: Guitar): boolean => {
         const { builder, model, type, backWood, topWood } = item;
         return (
           builder &&
           builder == tBuilder &&
-          (model && model == tModel) &&
+          (model && model.toLowerCase() == tModel.toLowerCase()) &&
           (type && type == tType) &&
           (backWood && backWood == tBackWood) &&
           (topWood && topWood == tTopWood)
