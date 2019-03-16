@@ -1,19 +1,22 @@
 import { Guitar } from "./Guitar";
+import { Type } from "./types/Type";
+import { Wood } from "./types/Wood";
+import { Builder } from "./types/Builder";
 export type Inventory = InstanceType<typeof Inventory>;
 export const Inventory = class {
   private _guitars: Guitar[];
   constructor() {
-    // this._guitars = new Array<Guitar>();
-    this._guitars = [];
+    this._guitars = new Array<Guitar>();
+    // this._guitars = [];
   }
   addGuitar(
     serialNumber: string,
     price: number,
-    builder: string,
+    builder: Builder,
     model: string,
-    type: string,
-    backWood: string,
-    topWood: string
+    type: Type,
+    backWood: Wood,
+    topWood: Wood
   ): void {
     const guitar: Guitar = new Guitar(
       serialNumber,
@@ -31,7 +34,7 @@ export const Inventory = class {
       (item: Guitar): boolean => item.serialNumber == serialNumber
     )[0];
   }
-  search(searchGuitar: Guitar): Guitar {
+  search(searchGuitar: Guitar): Guitar[] {
     const {
       builder: tBuilder,
       model: tModel,
@@ -51,6 +54,6 @@ export const Inventory = class {
           (topWood && topWood == tTopWood)
         );
       }
-    )[0];
+    );
   }
 };

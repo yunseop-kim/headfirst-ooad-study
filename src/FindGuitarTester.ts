@@ -17,13 +17,15 @@ const FindGuitarTester = class {
       Wood.ALDER,
       Wood.ALDER
     );
-    const guitar: Guitar = inventory.search(whatErinLikes);
-    if (guitar) {
-      const { builder, model, type, backWood, topWood, price } = guitar;
-      console.log(`Erin, you might like this ${builder} ${model} ${type} guitar:
-          ${backWood} back and sides,
-          ${topWood} top.
-          You can have it for only ${price}!`);
+    const guitars: Guitar[] = inventory.search(whatErinLikes);
+    if (guitars.length > 0) {
+      guitars.forEach((guitar: Guitar) => {
+        const { builder, model, type, backWood, topWood, price } = guitar;
+        console.log(`Erin, you might like this ${builder} ${model} ${type} guitar:
+                ${backWood} back and sides,
+                ${topWood} top.
+                You can have it for only ${price}!`);
+      });
     } else {
       console.log("Sorry, Erin, we have noting for you.");
     }
@@ -32,17 +34,66 @@ const FindGuitarTester = class {
     inventory.addGuitar(
       "V95693",
       1499.95,
-      "Fender",
+      Builder.FENDER,
       "Stratocastor",
-      "electric",
-      "Alder",
-      "Alder"
+      Type.ELECTRIC,
+      Wood.ALDER,
+      Wood.ALDER
     );
-    inventory.addGuitar("a", 1000, "b", "c", "d", "e", "f");
-    inventory.addGuitar("a1", 1000, "bsdf", "c", "d", "e", "f");
-    inventory.addGuitar("a2", 1000, "bsdf", "c", "d", "e", "f");
-    inventory.addGuitar("a3", 1000, "bsdf", "c", "d", "e", "f");
-    inventory.addGuitar("a4", 1000, "bsdf", "c", "d", "e", "f");
+    inventory.addGuitar(
+      "V9512",
+      1599.95,
+      Builder.FENDER,
+      "Stratocastor",
+      Type.ELECTRIC,
+      Wood.ALDER,
+      Wood.ALDER
+    );
+    inventory.addGuitar(
+      "a",
+      1000,
+      Builder.COLLINGS,
+      "c",
+      Type.ELECTRIC,
+      Wood.ALDER,
+      Wood.BRAZILIAN_ROSEWOOD
+    );
+    inventory.addGuitar(
+      "a1",
+      1000,
+      Builder.FENDER,
+      "c",
+      Type.ACOUSTIC,
+      Wood.ALDER,
+      Wood.BRAZILIAN_ROSEWOOD
+    );
+    inventory.addGuitar(
+      "a2",
+      1000,
+      Builder.GIBSON,
+      "c",
+      Type.ACOUSTIC,
+      Wood.ALDER,
+      Wood.BRAZILIAN_ROSEWOOD
+    );
+    inventory.addGuitar(
+      "a3",
+      1000,
+      Builder.MARTIN,
+      "c",
+      Type.ACOUSTIC,
+      Wood.ALDER,
+      Wood.BRAZILIAN_ROSEWOOD
+    );
+    inventory.addGuitar(
+      "a4",
+      1000,
+      Builder.OLSON,
+      "c",
+      Type.ELECTRIC,
+      Wood.ALDER,
+      Wood.BRAZILIAN_ROSEWOOD
+    );
   }
 };
 
