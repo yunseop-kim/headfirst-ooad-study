@@ -5,12 +5,16 @@ export const Remote = class {
   constructor(door: DogDoor) {
     this._door = door;
   }
+
   public pressButton(): void {
-    console.log(`Pressing the remote control button...`);
+    console.log("Pressing the remote control button...");
     if (this._door.isOpen()) {
       this._door.close();
     } else {
       this._door.open();
+      setTimeout(() => {
+        this._door.close();
+      }, 5000);
     }
   }
 };

@@ -9,13 +9,10 @@ export class DogDoorSimulator {
     remote.pressButton();
 
     console.log("\nFido has gone outside...");
-    remote.pressButton();
 
     console.log("\nFido's all done...");
-    remote.pressButton();
 
     console.log("\nFido's back inside...");
-    remote.pressButton();
   }
 }
 
