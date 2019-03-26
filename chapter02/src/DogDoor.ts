@@ -9,6 +9,9 @@ export const DogDoor = class {
   public open(): void {
     console.log("The dog door opens.");
     this._open = true;
+    setTimeout(() => {
+      this.close();
+    }, 5000);
   }
 
   public close(): void {
