@@ -12,6 +12,14 @@ export class DogDoorSimulator {
 
     console.log("\nFido's all done...");
 
+    setTimeout(() => {}, 10000);
+
+    console.log("...but he's stuck outside!");
+
+    console.log("\nFido starts barking...");
+    console.log("...so Gina grabs the remote control.");
+    remote.pressButton();
+
     console.log("\nFido's back inside...");
   }
 }
