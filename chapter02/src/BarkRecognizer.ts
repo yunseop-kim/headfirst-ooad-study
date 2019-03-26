@@ -1,4 +1,5 @@
 import { DogDoor } from "./DogDoor";
+export type BarkRecognizer = InstanceType<typeof BarkRecognizer>;
 export const BarkRecognizer = class {
   private _door: DogDoor;
   constructor(dogDoor: DogDoor) {
