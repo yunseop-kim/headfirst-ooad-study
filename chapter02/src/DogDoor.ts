@@ -3,10 +3,11 @@ import { Bark } from "./Bark";
 export type DogDoor = InstanceType<typeof DogDoor>;
 export const DogDoor = class {
   private _open: boolean;
-  private _allowedBark: Bark;
+  private _allowedBarks: Bark[];
 
   constructor() {
     this._open = false;
+    this._allowedBarks = [];
   }
 
   public open(): void {
@@ -26,11 +27,11 @@ export const DogDoor = class {
     return this._open;
   }
 
-  get allowedBark(): Bark {
-    return this._allowedBark;
+  get allowedBarks(): Bark[] {
+    return this._allowedBarks;
   }
 
-  set allowedBark(allowedBark: Bark) {
-    this._allowedBark = allowedBark;
+  addAllowedBark(allowedBark: Bark) {
+    this._allowedBarks.push(allowedBark);
   }
 }
