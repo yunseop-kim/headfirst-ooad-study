@@ -1,7 +1,9 @@
+import { Bark } from "./Bark";
+
 export type DogDoor = InstanceType<typeof DogDoor>;
 export const DogDoor = class {
   private _open: boolean;
-  private _allowedBark: string;
+  private _allowedBark: Bark;
 
   constructor() {
     this._open = false;
@@ -24,11 +26,11 @@ export const DogDoor = class {
     return this._open;
   }
 
-  get allowedBark(): string {
+  get allowedBark(): Bark {
     return this._allowedBark;
   }
 
-  set allowedBark(allowedBark: string) {
+  set allowedBark(allowedBark: Bark) {
     this._allowedBark = allowedBark;
   }
 }
