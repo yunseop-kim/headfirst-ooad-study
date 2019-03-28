@@ -1,6 +1,7 @@
 export type DogDoor = InstanceType<typeof DogDoor>;
 export const DogDoor = class {
   private _open: boolean;
+  private _allowedBark: string;
 
   constructor() {
     this._open = false;
@@ -22,4 +23,12 @@ export const DogDoor = class {
   public isOpen(): boolean {
     return this._open;
   }
-};
+
+  get allowedBark(): string {
+    return this._allowedBark;
+  }
+
+  set allowedBark(allowedBark: string) {
+    this._allowedBark = allowedBark;
+  }
+}
