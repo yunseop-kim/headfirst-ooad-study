@@ -2,14 +2,15 @@ import { Builder } from "./types/Builder";
 import { Type } from "./types/Type";
 import { Wood } from "./types/Wood";
 import { InstrumentSpec } from "./InstrumentSpec";
+import { Style } from "./Style";
 export class MandolinSpec extends InstrumentSpec {
-  private _style: number;
+  private _style: Style;
 
   constructor(
     builder: Builder,
     model: string,
     type: Type,
-    style: number,
+    style: Style,
     backWood: Wood,
     topWood: Wood
   ) {
@@ -17,7 +18,7 @@ export class MandolinSpec extends InstrumentSpec {
     this._style = style;
   }
 
-  get style(): number {
+  get style(): Style {
     return this._style;
   }
 
