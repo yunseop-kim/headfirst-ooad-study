@@ -1,6 +1,6 @@
 import { InstrumentSpec } from "./InstrumentSpec";
 
-export abstract class Instrument {
+export class Instrument {
   private _serialNumber: string;
   private _price: number;
   private _spec: InstrumentSpec;
@@ -15,6 +15,9 @@ export abstract class Instrument {
   }
   get price(): number {
     return this._price;
+  }
+  set price(value: number) {
+    this._price = value;
   }
   get spec(): InstrumentSpec {
     return this._spec;

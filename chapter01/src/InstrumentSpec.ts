@@ -1,61 +1,28 @@
-import { Builder } from "./types/Builder";
-import { Type } from "./types/Type";
-import { Wood } from "./types/Wood";
-export abstract class InstrumentSpec {
-  private _builder: Builder;
-  private _model: string;
-  private _type: Type;
-  private _backWood: Wood;
-  private _topWood: Wood;
+export class InstrumentSpec {
+  private _properties: Map<any, any>;
 
-  constructor(
-    builder: Builder,
-    model: string,
-    type: Type,
-    backWood: Wood,
-    topWood: Wood
-  ) {
-    this._builder = builder;
-    this._model = model;
-    this._type = type;
-    this._backWood = backWood;
-    this._topWood = topWood;
+  constructor(properties: Map<any, any>) {
+    if (properties == null) {
+      this._properties = new Map();
+    } else {
+      this._properties = new Map(properties);
+    }
   }
 
-  get builder(): Builder {
-    return this._builder;
+  public getProperty(propertyName: string) {
+    return this._properties.get(propertyName);
   }
 
-  get model(): string {
-    return this._model;
-  }
-
-  get type(): Type {
-    return this._type;
-  }
-
-  get backWood(): Wood {
-    return this._backWood;
-  }
-
-  get topWood(): Wood {
-    return this._topWood;
+  public get properties(): Map<any, any> {
+    return this._properties;
   }
 
   public matches(otherSpec: InstrumentSpec): boolean {
-    const { builder, model, type, backWood, topWood } = this;
-    const {
-      builder: otherBuilder,
-      model: otherModel,
-      type: otherType,
-      backWood: otherBackWood,
-      topWood: otherTopWood
-    } = otherSpec;
-    if (builder !== otherBuilder) return false;
-    if (model && model !== otherModel) return false;
-    if (type !== otherType) return false;
-    if (backWood !== otherBackWood) return false;
-    if (topWood !== otherTopWood) return false;
-    return true;
+    for (var [key, value] of otherSpec.properties.entries()) {
+      if (this.properties.get(key) == value) {
+        return true;
+      }
+    }
+    return false;
   }
 }
